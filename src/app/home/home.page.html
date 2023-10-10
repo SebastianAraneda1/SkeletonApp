@@ -1,6 +1,6 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
+    <ion-title class="titulo animation-title ">
       SkeletonApp
     </ion-title>
   </ion-toolbar>
@@ -12,11 +12,11 @@
   <h2 style="text-align: center;">Información adicional</h2>
   <ion-item>
     <label>Nombre: </label>
-    <input [(ngModel)]="nombre" type="text" placeholder="Ingrese nombre">
+    <input [ngClass]="{'animation-input':limpio}" [(ngModel)]="nombre" type="text" placeholder="Ingrese nombre">
   </ion-item>
   <ion-item>
     <label>Apellido: </label>
-    <input [(ngModel)]="apellido" type="text" placeholder="Ingrese nombre">
+    <input [ngClass]="{'animation-input':limpio}" [(ngModel)]="apellido" type="text" placeholder="Ingrese nombre">
   </ion-item>
   <ion-item>
     <label>Nivel de educación: </label>
@@ -29,16 +29,22 @@
   </ion-item>
   <ion-item>
     <label>Fecha de nacimiento: </label>
-    <input [(ngModel)]="fecha" type="date">
+    <mat-form-field>
+      <mat-label>Choose a date</mat-label>
+      <input [(ngModel)]="fecha" matInput [matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>    
   </ion-item>
   <ion-item>
     <ion-button (click)="limpiar()">Limpiar</ion-button>
     <ion-button (click)="mostrar()">Mostrar</ion-button>
   </ion-item>
-</ion-content>
 
-<ion-item>
-  <ion-footer>
-    App desarrollada por Sebastián
-  </ion-footer>
-</ion-item>
+  <ion-item> 
+    <ion-footer>
+      App desarrollada por Sebastián
+    </ion-footer>
+  </ion-item> 
+</ion-content>
